@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CryptoBlockChainApp
-{
+{public enum LabelType { neutral, warning,critical}
     internal class Ride
     {
 
@@ -17,11 +17,11 @@ namespace CryptoBlockChainApp
         public int id;
         public string location;
         public DateTime date;
-        public DateTime time;
+        public DateTime fromTime, toTime;
         public int avSeats;
         public double cost;
 
-        public Ride(int id,int avatarNum, string ethereumAddress, string location, int avSeats, DateTime date, DateTime time,double cost)
+        public Ride(int id,int avatarNum, string ethereumAddress, string location, int avSeats, DateTime date, DateTime fromTime,DateTime toTime,double cost)
         {
             this.id = id;
             this.avatarNum = avatarNum;
@@ -29,7 +29,8 @@ namespace CryptoBlockChainApp
             this.location = location;
             this.avSeats = avSeats;
             this.date = date;
-            this.time = time;
+            this.fromTime = fromTime;
+            this.toTime = toTime;
             this.cost = cost;
         }
     }

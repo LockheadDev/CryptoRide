@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace CryptoBlockChainApp
 {
     // TODO - AGREGAR IMAGENES
-    // TODO - FILTROS DE COLUMNAS
-    // TODO - SELECCIONAR VIAJES PARA MI
-    // TODO - SOLO AGREGAR UN RIDE PORR CONDSUCTOR
+    // TODO - SOLO AGREGAR UN RIDE OFFER POR CONDUCTOR
+    // TODO - VALIDAR HORAS QUE NO CHOQUEN EN MYRIDES
+
     public partial class CryptoRide : Form
     {
         private User user;
@@ -36,30 +37,68 @@ namespace CryptoBlockChainApp
             currentavatarnumLabel.Text = currentavatarNum.ToString();
         }
 
+        private Ride SelectOfferRide()
+        {
+       
+            foreach (ListViewItem item in offerridesListView.Items)
+            {
+                if (item.Focused || item.Selected)
+                {
+                    return FindRide(int.Parse(item.SubItems[0].Text));
+                }
+            }
+            return null;
+        }
+        private Ride FindRide(int ID)
+        {
+            foreach (Ride item in rides)
+            {
+                if (ID == item.id)
+                    return item;
+            }
+            return null;
+        }
+
 
         #region Buttons
+        private void bidButton_Click(object sender, EventArgs e)
+        {
+            Ride selected_ride = SelectOfferRide();
+            user.myrides.Add(selected_ride);
+            UpdateGUI();
+        }
         private void offerpublishButton_Click(object sender, EventArgs e)
         {
+            Debug.WriteLine("Sup1");
             if (user == null)
             {
-                publishridewarningLabel.Text = "Please define a user!";
+                ShowLabel("Please define a user!", publishridewarningLabel, LabelType.warning);
                 return;
+               
             }
-                try
+            try
             {
+                Debug.WriteLine("Finally Entered");
                 ClearLabel(publishridewarningLabel);
-               Ride ride = new Ride(GetUnusedID(), user.avatarNum, user.ethereumAddress, locationComboBox.Text, int.Parse(availableseatsComboBox.Text), dateTimePicker1.Value, dateTimePicker2.Value,double.Parse(costTextBox.Text));
+                if (fromDateTimePicker.Value >= toDateTimePicker.Value) { ShowLabel("Ride hours are not factible.", publishridewarningLabel, LabelType.warning); return; }
+                Ride ride = new Ride(
+                    GetUnusedID(),
+                    user.avatarNum,
+                    user.ethereumAddress,
+                    locationComboBox.Text,
+                    int.Parse(availableseatsComboBox.Text),
+                    dateTimePicker1.Value,
+                    fromDateTimePicker.Value,
+                    toDateTimePicker.Value,
+                    double.Parse(costTextBox.Text));
                rides.Add(ride);
             }
             catch
             {
-                publishridewarningLabel.Text = "You must fill all fields correctly!";
+                ShowLabel("You must fill all fields correctly!", publishridewarningLabel, LabelType.warning);
             }
-           
-
             UpdateGUI();
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
 
@@ -75,7 +114,6 @@ namespace CryptoBlockChainApp
 
             UpdateGUI();
         }
-
         private void previousavatarButton_Click(object sender, EventArgs e)
         {
             if (currentavatarNum <= 1) return;
@@ -85,11 +123,14 @@ namespace CryptoBlockChainApp
             UpdateGUI();
         }
         #endregion
-
         #region Updaters
         private void UpdateGUI()
         {
-            UpdateOfferTable();
+            if (user != null && rides.Count > 0)
+            {
+                Debug.WriteLine("ola");
+                UpdateListViews(user.myrides);
+            }
                 if (rides.Count >= 50)
                 {
                     offerpublishButton.Enabled = false;
@@ -101,26 +142,42 @@ namespace CryptoBlockChainApp
             
         }
 
-        private void UpdateOfferTable()
+        private void UpdateListViews(List<Ride> userRides)
         {
-            OfferTravels.Items.Clear();
+            offerridesListView.Items.Clear();
+            myridesListView.Items.Clear();
             foreach (Ride item in rides)
             {
-                AddRideToOfferTable(item);
+                addofferListView(item);
 
             }
+            foreach (Ride item in userRides)
+            {
+                addmyridesListView(item);
+            }
         }
-
-        private void AddRideToOfferTable(Ride ride)
+        private void addmyridesListView(Ride ride)
+        {
+            if (ride == null) return;
+            ListViewItem item = new ListViewItem(ride.id.ToString());
+            item.SubItems.Add(ride.avatarNum.ToString());
+            item.SubItems.Add(ride.date.Day + "/" + ride.date.Month + "/" + ride.date.Year.ToString());
+            item.SubItems.Add(ride.fromTime.TimeOfDay.ToString());
+            item.SubItems.Add(ride.toTime.TimeOfDay.ToString());
+            item.SubItems.Add(ride.location);
+            myridesListView.Items.Add(item);
+        }
+        private void addofferListView(Ride ride)
         {
             ListViewItem item = new ListViewItem(ride.id.ToString());
             item.SubItems.Add(ride.avatarNum.ToString());
             item.SubItems.Add(ride.date.Day + "/" + ride.date.Month + "/" + ride.date.Year.ToString());
-            item.SubItems.Add(ride.time.TimeOfDay.ToString());
+            item.SubItems.Add(ride.fromTime.TimeOfDay.ToString());
+            item.SubItems.Add(ride.toTime.TimeOfDay.ToString());
             item.SubItems.Add(ride.location);
             item.SubItems.Add(ride.avSeats.ToString());
             item.SubItems.Add("$"+ride.cost.ToString());
-            OfferTravels.Items.Add(item);
+            offerridesListView.Items.Add(item);
         }
         #endregion
 
@@ -134,9 +191,29 @@ namespace CryptoBlockChainApp
             publishridewarningLabel.Text = "";
             bidresultLabel.Text = "";
         }
+        private void ShowLabel(String str, Label label, LabelType lbltype)
+        {
+            Color clr = Color.White;
+            switch (lbltype)
+            {
+                case LabelType.neutral:
+                    clr = Color.Black;
+                    break;
+                case LabelType.warning:
+                    clr = Color.DarkOrange;
+                    break;
+                case LabelType.critical:
+                    clr = Color.Red;
+                    break;
+            }
+            label.Text = str;
+            label.ForeColor = clr;
+            label.Enabled = true;
+        }
         private void ClearLabel(Label label)
         {
             label.Text = "";
+            label.Enabled = false;
         }
         #endregion
 
@@ -156,9 +233,11 @@ namespace CryptoBlockChainApp
         }
         private void OfferTravels_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //TODO Filtrado de columnas
         }
 
         #endregion
+
+        
     }
 }

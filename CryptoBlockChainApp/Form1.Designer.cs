@@ -32,29 +32,32 @@ namespace CryptoBlockChainApp
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CryptoRide));
-            this.OfferTravels = new System.Windows.Forms.ListView();
+            this.offerridesListView = new System.Windows.Forms.ListView();
             this.ColumnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnHour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnFrom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnSeats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnCost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MyTravels = new System.Windows.Forms.ListView();
+            this.myridesListView = new System.Windows.Forms.ListView();
             this.ColumnIDUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnImageUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnDateUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnHourUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnFromUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnLocationUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rideofferGroupBox = new System.Windows.Forms.GroupBox();
             this.bidresultLabel = new System.Windows.Forms.Label();
             this.bidButton = new System.Windows.Forms.Button();
             this.publishrideGroupBox = new System.Windows.Forms.GroupBox();
+            this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.fromLabel = new System.Windows.Forms.Label();
             this.publishridewarningLabel = new System.Windows.Forms.Label();
             this.moneysimbol = new System.Windows.Forms.Label();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.offerpublishButton = new System.Windows.Forms.Button();
             this.availableseatsComboBox = new System.Windows.Forms.ComboBox();
@@ -75,6 +78,8 @@ namespace CryptoBlockChainApp
             this.previousavatarButton = new System.Windows.Forms.Button();
             this.nextavatarButton = new System.Windows.Forms.Button();
             this.avatarPictureBox = new System.Windows.Forms.PictureBox();
+            this.ColumnTo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnToUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rideofferGroupBox.SuspendLayout();
             this.publishrideGroupBox.SuspendLayout();
             this.myridesGroupBox.SuspendLayout();
@@ -82,26 +87,27 @@ namespace CryptoBlockChainApp
             ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // OfferTravels
+            // offerridesListView
             // 
-            this.OfferTravels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.OfferTravels.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.offerridesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.offerridesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ColumnID,
             this.ColumnImage,
             this.ColumnDate,
-            this.ColumnHour,
+            this.ColumnFrom,
+            this.ColumnTo,
             this.ColumnLocation,
             this.ColumnSeats,
             this.ColumnCost});
-            this.OfferTravels.GridLines = true;
-            this.OfferTravels.HideSelection = false;
-            this.OfferTravels.Location = new System.Drawing.Point(6, 19);
-            this.OfferTravels.Name = "OfferTravels";
-            this.OfferTravels.Size = new System.Drawing.Size(426, 256);
-            this.OfferTravels.TabIndex = 1;
-            this.OfferTravels.UseCompatibleStateImageBehavior = false;
-            this.OfferTravels.View = System.Windows.Forms.View.Details;
-            this.OfferTravels.SelectedIndexChanged += new System.EventHandler(this.OfferTravels_SelectedIndexChanged);
+            this.offerridesListView.GridLines = true;
+            this.offerridesListView.HideSelection = false;
+            this.offerridesListView.Location = new System.Drawing.Point(6, 19);
+            this.offerridesListView.Name = "offerridesListView";
+            this.offerridesListView.Size = new System.Drawing.Size(426, 256);
+            this.offerridesListView.TabIndex = 1;
+            this.offerridesListView.UseCompatibleStateImageBehavior = false;
+            this.offerridesListView.View = System.Windows.Forms.View.Details;
+            this.offerridesListView.SelectedIndexChanged += new System.EventHandler(this.OfferTravels_SelectedIndexChanged);
             // 
             // ColumnID
             // 
@@ -118,9 +124,9 @@ namespace CryptoBlockChainApp
             this.ColumnDate.Text = "Date";
             this.ColumnDate.Width = 64;
             // 
-            // ColumnHour
+            // ColumnFrom
             // 
-            this.ColumnHour.Text = "Hour";
+            this.ColumnFrom.Text = "From";
             // 
             // ColumnLocation
             // 
@@ -137,22 +143,23 @@ namespace CryptoBlockChainApp
             this.ColumnCost.Text = "Cost";
             this.ColumnCost.Width = 72;
             // 
-            // MyTravels
+            // myridesListView
             // 
-            this.MyTravels.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.myridesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ColumnIDUser,
             this.ColumnImageUser,
             this.ColumnDateUser,
-            this.ColumnHourUser,
+            this.ColumnFromUser,
+            this.ColumnToUser,
             this.ColumnLocationUser});
-            this.MyTravels.GridLines = true;
-            this.MyTravels.HideSelection = false;
-            this.MyTravels.Location = new System.Drawing.Point(6, 19);
-            this.MyTravels.Name = "MyTravels";
-            this.MyTravels.Size = new System.Drawing.Size(405, 256);
-            this.MyTravels.TabIndex = 2;
-            this.MyTravels.UseCompatibleStateImageBehavior = false;
-            this.MyTravels.View = System.Windows.Forms.View.Details;
+            this.myridesListView.GridLines = true;
+            this.myridesListView.HideSelection = false;
+            this.myridesListView.Location = new System.Drawing.Point(6, 19);
+            this.myridesListView.Name = "myridesListView";
+            this.myridesListView.Size = new System.Drawing.Size(405, 256);
+            this.myridesListView.TabIndex = 2;
+            this.myridesListView.UseCompatibleStateImageBehavior = false;
+            this.myridesListView.View = System.Windows.Forms.View.Details;
             // 
             // ColumnIDUser
             // 
@@ -169,9 +176,9 @@ namespace CryptoBlockChainApp
             this.ColumnDateUser.Text = "Date";
             this.ColumnDateUser.Width = 100;
             // 
-            // ColumnHourUser
+            // ColumnFromUser
             // 
-            this.ColumnHourUser.Text = "Hour";
+            this.ColumnFromUser.Text = "From";
             // 
             // ColumnLocationUser
             // 
@@ -183,7 +190,7 @@ namespace CryptoBlockChainApp
             this.rideofferGroupBox.Controls.Add(this.bidresultLabel);
             this.rideofferGroupBox.Controls.Add(this.bidButton);
             this.rideofferGroupBox.Controls.Add(this.publishrideGroupBox);
-            this.rideofferGroupBox.Controls.Add(this.OfferTravels);
+            this.rideofferGroupBox.Controls.Add(this.offerridesListView);
             this.rideofferGroupBox.Location = new System.Drawing.Point(12, 16);
             this.rideofferGroupBox.Name = "rideofferGroupBox";
             this.rideofferGroupBox.Size = new System.Drawing.Size(437, 530);
@@ -208,14 +215,18 @@ namespace CryptoBlockChainApp
             this.bidButton.TabIndex = 4;
             this.bidButton.Text = "Bid";
             this.bidButton.UseVisualStyleBackColor = true;
+            this.bidButton.Click += new System.EventHandler(this.bidButton_Click);
             // 
             // publishrideGroupBox
             // 
+            this.publishrideGroupBox.Controls.Add(this.toDateTimePicker);
+            this.publishrideGroupBox.Controls.Add(this.toLabel);
+            this.publishrideGroupBox.Controls.Add(this.fromLabel);
             this.publishrideGroupBox.Controls.Add(this.publishridewarningLabel);
             this.publishrideGroupBox.Controls.Add(this.moneysimbol);
             this.publishrideGroupBox.Controls.Add(this.costTextBox);
             this.publishrideGroupBox.Controls.Add(this.costLabel);
-            this.publishrideGroupBox.Controls.Add(this.dateTimePicker2);
+            this.publishrideGroupBox.Controls.Add(this.fromDateTimePicker);
             this.publishrideGroupBox.Controls.Add(this.dateTimePicker1);
             this.publishrideGroupBox.Controls.Add(this.offerpublishButton);
             this.publishrideGroupBox.Controls.Add(this.availableseatsComboBox);
@@ -230,6 +241,36 @@ namespace CryptoBlockChainApp
             this.publishrideGroupBox.TabIndex = 3;
             this.publishrideGroupBox.TabStop = false;
             this.publishrideGroupBox.Text = "Publish Ride";
+            // 
+            // toDateTimePicker
+            // 
+            this.toDateTimePicker.CustomFormat = "HH:mm";
+            this.toDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.toDateTimePicker.Location = new System.Drawing.Point(176, 67);
+            this.toDateTimePicker.MinDate = new System.DateTime(2022, 4, 23, 0, 0, 0, 0);
+            this.toDateTimePicker.Name = "toDateTimePicker";
+            this.toDateTimePicker.ShowUpDown = true;
+            this.toDateTimePicker.Size = new System.Drawing.Size(53, 20);
+            this.toDateTimePicker.TabIndex = 17;
+            this.toDateTimePicker.Value = new System.DateTime(2022, 4, 23, 0, 0, 0, 0);
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(173, 51);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(23, 13);
+            this.toLabel.TabIndex = 16;
+            this.toLabel.Text = "To:";
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(111, 51);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(33, 13);
+            this.fromLabel.TabIndex = 15;
+            this.fromLabel.Text = "From:";
             // 
             // publishridewarningLabel
             // 
@@ -266,17 +307,17 @@ namespace CryptoBlockChainApp
             this.costLabel.TabIndex = 11;
             this.costLabel.Text = "Cost";
             // 
-            // dateTimePicker2
+            // fromDateTimePicker
             // 
-            this.dateTimePicker2.CustomFormat = "HH:mm";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(117, 67);
-            this.dateTimePicker2.MinDate = new System.DateTime(2022, 4, 23, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(53, 20);
-            this.dateTimePicker2.TabIndex = 10;
-            this.dateTimePicker2.Value = new System.DateTime(2022, 4, 23, 0, 0, 0, 0);
+            this.fromDateTimePicker.CustomFormat = "HH:mm";
+            this.fromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.fromDateTimePicker.Location = new System.Drawing.Point(117, 67);
+            this.fromDateTimePicker.MinDate = new System.DateTime(2022, 4, 23, 0, 0, 0, 0);
+            this.fromDateTimePicker.Name = "fromDateTimePicker";
+            this.fromDateTimePicker.ShowUpDown = true;
+            this.fromDateTimePicker.Size = new System.Drawing.Size(53, 20);
+            this.fromDateTimePicker.TabIndex = 10;
+            this.fromDateTimePicker.Value = new System.DateTime(2022, 4, 23, 0, 0, 0, 0);
             // 
             // dateTimePicker1
             // 
@@ -379,7 +420,7 @@ namespace CryptoBlockChainApp
             // myridesGroupBox
             // 
             this.myridesGroupBox.Controls.Add(this.unbidButton);
-            this.myridesGroupBox.Controls.Add(this.MyTravels);
+            this.myridesGroupBox.Controls.Add(this.myridesListView);
             this.myridesGroupBox.Location = new System.Drawing.Point(455, 16);
             this.myridesGroupBox.Name = "myridesGroupBox";
             this.myridesGroupBox.Size = new System.Drawing.Size(417, 310);
@@ -493,6 +534,14 @@ namespace CryptoBlockChainApp
             this.avatarPictureBox.TabIndex = 4;
             this.avatarPictureBox.TabStop = false;
             // 
+            // ColumnTo
+            // 
+            this.ColumnTo.Text = "To";
+            // 
+            // ColumnToUser
+            // 
+            this.ColumnToUser.Text = "To";
+            // 
             // CryptoRide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,19 +568,19 @@ namespace CryptoBlockChainApp
         }
 
         #endregion
-        private System.Windows.Forms.ListView OfferTravels;
+        private System.Windows.Forms.ListView offerridesListView;
         private System.Windows.Forms.ColumnHeader ColumnID;
         private System.Windows.Forms.ColumnHeader ColumnImage;
         private System.Windows.Forms.ColumnHeader ColumnDate;
-        private System.Windows.Forms.ColumnHeader ColumnHour;
+        private System.Windows.Forms.ColumnHeader ColumnFrom;
         private System.Windows.Forms.ColumnHeader ColumnSeats;
-        private System.Windows.Forms.ListView MyTravels;
+        private System.Windows.Forms.ListView myridesListView;
         private System.Windows.Forms.ColumnHeader ColumnIDUser;
         private System.Windows.Forms.ColumnHeader ColumnImageUser;
         private System.Windows.Forms.ColumnHeader ColumnDateUser;
         private System.Windows.Forms.ColumnHeader ColumnLocationUser;
         private System.Windows.Forms.ColumnHeader ColumnLocation;
-        private System.Windows.Forms.ColumnHeader ColumnHourUser;
+        private System.Windows.Forms.ColumnHeader ColumnFromUser;
         private System.Windows.Forms.GroupBox rideofferGroupBox;
         private System.Windows.Forms.GroupBox myridesGroupBox;
         private System.Windows.Forms.GroupBox publishrideGroupBox;
@@ -556,12 +605,17 @@ namespace CryptoBlockChainApp
         private System.Windows.Forms.Label bidresultLabel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label currentavatarnumLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker fromDateTimePicker;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.Label costLabel;
         private System.Windows.Forms.Label moneysimbol;
         private System.Windows.Forms.Label publishridewarningLabel;
         private System.Windows.Forms.ColumnHeader ColumnCost;
+        private System.Windows.Forms.DateTimePicker toDateTimePicker;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.ColumnHeader ColumnTo;
+        private System.Windows.Forms.ColumnHeader ColumnToUser;
     }
 }
 
