@@ -37,6 +37,7 @@ namespace CryptoBlockChainApp
             this.ColumnImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnFrom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnTo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnSeats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnCost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,6 +46,7 @@ namespace CryptoBlockChainApp
             this.ColumnImageUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnDateUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnFromUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnToUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnLocationUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rideofferGroupBox = new System.Windows.Forms.GroupBox();
             this.bidresultLabel = new System.Windows.Forms.Label();
@@ -54,7 +56,7 @@ namespace CryptoBlockChainApp
             this.toLabel = new System.Windows.Forms.Label();
             this.fromLabel = new System.Windows.Forms.Label();
             this.publishridewarningLabel = new System.Windows.Forms.Label();
-            this.moneysimbol = new System.Windows.Forms.Label();
+            this.ethereumLabel = new System.Windows.Forms.Label();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
             this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -78,8 +80,6 @@ namespace CryptoBlockChainApp
             this.previousavatarButton = new System.Windows.Forms.Button();
             this.nextavatarButton = new System.Windows.Forms.Button();
             this.avatarPictureBox = new System.Windows.Forms.PictureBox();
-            this.ColumnTo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnToUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rideofferGroupBox.SuspendLayout();
             this.publishrideGroupBox.SuspendLayout();
             this.myridesGroupBox.SuspendLayout();
@@ -127,6 +127,10 @@ namespace CryptoBlockChainApp
             // ColumnFrom
             // 
             this.ColumnFrom.Text = "From";
+            // 
+            // ColumnTo
+            // 
+            this.ColumnTo.Text = "To";
             // 
             // ColumnLocation
             // 
@@ -180,6 +184,10 @@ namespace CryptoBlockChainApp
             // 
             this.ColumnFromUser.Text = "From";
             // 
+            // ColumnToUser
+            // 
+            this.ColumnToUser.Text = "To";
+            // 
             // ColumnLocationUser
             // 
             this.ColumnLocationUser.Text = "Location";
@@ -223,7 +231,7 @@ namespace CryptoBlockChainApp
             this.publishrideGroupBox.Controls.Add(this.toLabel);
             this.publishrideGroupBox.Controls.Add(this.fromLabel);
             this.publishrideGroupBox.Controls.Add(this.publishridewarningLabel);
-            this.publishrideGroupBox.Controls.Add(this.moneysimbol);
+            this.publishrideGroupBox.Controls.Add(this.ethereumLabel);
             this.publishrideGroupBox.Controls.Add(this.costTextBox);
             this.publishrideGroupBox.Controls.Add(this.costLabel);
             this.publishrideGroupBox.Controls.Add(this.fromDateTimePicker);
@@ -282,18 +290,18 @@ namespace CryptoBlockChainApp
             this.publishridewarningLabel.TabIndex = 14;
             this.publishridewarningLabel.Text = "//WARNING";
             // 
-            // moneysimbol
+            // ethereumLabel
             // 
-            this.moneysimbol.AutoSize = true;
-            this.moneysimbol.Location = new System.Drawing.Point(111, 163);
-            this.moneysimbol.Name = "moneysimbol";
-            this.moneysimbol.Size = new System.Drawing.Size(13, 13);
-            this.moneysimbol.TabIndex = 13;
-            this.moneysimbol.Text = "$";
+            this.ethereumLabel.AutoSize = true;
+            this.ethereumLabel.Location = new System.Drawing.Point(139, 144);
+            this.ethereumLabel.Name = "ethereumLabel";
+            this.ethereumLabel.Size = new System.Drawing.Size(22, 13);
+            this.ethereumLabel.TabIndex = 13;
+            this.ethereumLabel.Text = "eth";
             // 
             // costTextBox
             // 
-            this.costTextBox.Location = new System.Drawing.Point(130, 160);
+            this.costTextBox.Location = new System.Drawing.Point(108, 160);
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(82, 20);
             this.costTextBox.TabIndex = 12;
@@ -534,14 +542,6 @@ namespace CryptoBlockChainApp
             this.avatarPictureBox.TabIndex = 4;
             this.avatarPictureBox.TabStop = false;
             // 
-            // ColumnTo
-            // 
-            this.ColumnTo.Text = "To";
-            // 
-            // ColumnToUser
-            // 
-            this.ColumnToUser.Text = "To";
-            // 
             // CryptoRide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,7 +608,7 @@ namespace CryptoBlockChainApp
         private System.Windows.Forms.DateTimePicker fromDateTimePicker;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.Label costLabel;
-        private System.Windows.Forms.Label moneysimbol;
+        private System.Windows.Forms.Label ethereumLabel;
         private System.Windows.Forms.Label publishridewarningLabel;
         private System.Windows.Forms.ColumnHeader ColumnCost;
         private System.Windows.Forms.DateTimePicker toDateTimePicker;

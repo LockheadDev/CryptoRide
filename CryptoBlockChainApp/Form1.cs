@@ -15,7 +15,11 @@ namespace CryptoBlockChainApp
     // TODO - AGREGAR IMAGENES
     // TODO - SOLO AGREGAR UN RIDE OFFER POR CONDUCTOR
     // TODO - VALIDAR HORAS QUE NO CHOQUEN EN MYRIDES
-
+    // TODO - DECREMENT # of seats and disable the ride when full
+    // TODO - REFACTOR DOCUMENT NAMES
+    // TODO - STORE USER RIDES
+    // TODO - PUT ethereum 
+    // TODO - LOAD WALLET MUST!!
     public partial class CryptoRide : Form
     {
         private User user;
@@ -128,7 +132,6 @@ namespace CryptoBlockChainApp
         {
             if (user != null && rides.Count > 0)
             {
-                Debug.WriteLine("ola");
                 UpdateListViews(user.myrides);
             }
                 if (rides.Count >= 50)
