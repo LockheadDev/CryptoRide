@@ -33,8 +33,8 @@ namespace CryptoBlockChainApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CryptoRide));
             this.offerridesListView = new System.Windows.Forms.ListView();
-            this.ColumnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnFrom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnTo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,8 +42,8 @@ namespace CryptoBlockChainApp
             this.ColumnSeats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnCost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.myridesListView = new System.Windows.Forms.ListView();
-            this.ColumnIDUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnImageUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnIDUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnDateUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnFromUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColumnToUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,7 +56,6 @@ namespace CryptoBlockChainApp
             this.toLabel = new System.Windows.Forms.Label();
             this.fromLabel = new System.Windows.Forms.Label();
             this.publishridewarningLabel = new System.Windows.Forms.Label();
-            this.ethereumLabel = new System.Windows.Forms.Label();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.costLabel = new System.Windows.Forms.Label();
             this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -80,11 +79,14 @@ namespace CryptoBlockChainApp
             this.previousavatarButton = new System.Windows.Forms.Button();
             this.nextavatarButton = new System.Windows.Forms.Button();
             this.avatarPictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hourFormat = new System.Windows.Forms.Label();
             this.rideofferGroupBox.SuspendLayout();
             this.publishrideGroupBox.SuspendLayout();
             this.myridesGroupBox.SuspendLayout();
             this.profileGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // offerridesListView
@@ -109,15 +111,15 @@ namespace CryptoBlockChainApp
             this.offerridesListView.View = System.Windows.Forms.View.Details;
             this.offerridesListView.SelectedIndexChanged += new System.EventHandler(this.OfferTravels_SelectedIndexChanged);
             // 
-            // ColumnID
-            // 
-            this.ColumnID.Text = "ID";
-            this.ColumnID.Width = 24;
-            // 
             // ColumnImage
             // 
             this.ColumnImage.Text = "Avatar";
             this.ColumnImage.Width = 80;
+            // 
+            // ColumnID
+            // 
+            this.ColumnID.Text = "ID";
+            this.ColumnID.Width = 24;
             // 
             // ColumnDate
             // 
@@ -165,15 +167,15 @@ namespace CryptoBlockChainApp
             this.myridesListView.UseCompatibleStateImageBehavior = false;
             this.myridesListView.View = System.Windows.Forms.View.Details;
             // 
-            // ColumnIDUser
-            // 
-            this.ColumnIDUser.Text = "ID";
-            this.ColumnIDUser.Width = 32;
-            // 
             // ColumnImageUser
             // 
             this.ColumnImageUser.Text = "Avatar";
             this.ColumnImageUser.Width = 80;
+            // 
+            // ColumnIDUser
+            // 
+            this.ColumnIDUser.Text = "ID";
+            this.ColumnIDUser.Width = 32;
             // 
             // ColumnDateUser
             // 
@@ -227,11 +229,12 @@ namespace CryptoBlockChainApp
             // 
             // publishrideGroupBox
             // 
+            this.publishrideGroupBox.Controls.Add(this.hourFormat);
+            this.publishrideGroupBox.Controls.Add(this.pictureBox1);
             this.publishrideGroupBox.Controls.Add(this.toDateTimePicker);
             this.publishrideGroupBox.Controls.Add(this.toLabel);
             this.publishrideGroupBox.Controls.Add(this.fromLabel);
             this.publishrideGroupBox.Controls.Add(this.publishridewarningLabel);
-            this.publishrideGroupBox.Controls.Add(this.ethereumLabel);
             this.publishrideGroupBox.Controls.Add(this.costTextBox);
             this.publishrideGroupBox.Controls.Add(this.costLabel);
             this.publishrideGroupBox.Controls.Add(this.fromDateTimePicker);
@@ -289,15 +292,6 @@ namespace CryptoBlockChainApp
             this.publishridewarningLabel.Size = new System.Drawing.Size(70, 13);
             this.publishridewarningLabel.TabIndex = 14;
             this.publishridewarningLabel.Text = "//WARNING";
-            // 
-            // ethereumLabel
-            // 
-            this.ethereumLabel.AutoSize = true;
-            this.ethereumLabel.Location = new System.Drawing.Point(139, 144);
-            this.ethereumLabel.Name = "ethereumLabel";
-            this.ethereumLabel.Size = new System.Drawing.Size(22, 13);
-            this.ethereumLabel.TabIndex = 13;
-            this.ethereumLabel.Text = "eth";
             // 
             // costTextBox
             // 
@@ -543,6 +537,26 @@ namespace CryptoBlockChainApp
             this.avatarPictureBox.TabIndex = 4;
             this.avatarPictureBox.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(196, 156);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // hourFormat
+            // 
+            this.hourFormat.AutoSize = true;
+            this.hourFormat.Location = new System.Drawing.Point(235, 73);
+            this.hourFormat.Name = "hourFormat";
+            this.hourFormat.Size = new System.Drawing.Size(60, 13);
+            this.hourFormat.TabIndex = 19;
+            this.hourFormat.Text = "24hr format";
+            // 
             // CryptoRide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +578,7 @@ namespace CryptoBlockChainApp
             this.profileGroupBox.ResumeLayout(false);
             this.profileGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatarPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -609,7 +624,6 @@ namespace CryptoBlockChainApp
         private System.Windows.Forms.DateTimePicker fromDateTimePicker;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.Label costLabel;
-        private System.Windows.Forms.Label ethereumLabel;
         private System.Windows.Forms.Label publishridewarningLabel;
         private System.Windows.Forms.ColumnHeader ColumnCost;
         private System.Windows.Forms.DateTimePicker toDateTimePicker;
@@ -617,6 +631,8 @@ namespace CryptoBlockChainApp
         private System.Windows.Forms.Label fromLabel;
         private System.Windows.Forms.ColumnHeader ColumnTo;
         private System.Windows.Forms.ColumnHeader ColumnToUser;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label hourFormat;
     }
 }
 

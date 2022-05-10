@@ -8,7 +8,8 @@ using System.Linq;
 
 namespace CryptoBlockChainApp
 {
-
+    // TODO/OPTIONAL - SALVAR EN UN FILE USERS(OBJ) LIST AND RIDES(OBJ) LIST -> INITIALIZE THIS OBJECTS
+    // 
     // TODO - PUT ethereum 
     // TODO - LOAD WALLET MUST!!
     public partial class CryptoRide : Form
@@ -20,7 +21,7 @@ namespace CryptoBlockChainApp
         private List<Label> labels;
 
         //IMAGES Handle
-        String proyectpath = "C:\\Users\\hrswf\\OneDrive\\Docs\\VSProjects\\CryptoRide\\CryptoBlockChainApp\\";
+        String proyectpath = "C:\\Users\\hrswf\\OneDrive\\Docs\\VSProjects\\CryptoRide\\CryptoBlockChainApp\\"; //PUT THE FOLDER WHERE THE IMAGES ARE
        List<Image> images= new List<Image>();
         public CryptoRide()
         {
@@ -135,7 +136,7 @@ namespace CryptoBlockChainApp
             Ride selected_ride = SelectOfferRide();
             if (ValidateDate(user, selected_ride))
             {
-                //TODO ETH SMART CONTRACT VALIDATION FOR TRANSACTION
+                //TODO ETH SMART CONTRACT VALIDATION FOR TRANSACTION between user.ethereumaddress y selected_ride.ethereumaddress
                 selected_ride.avSeats--;
                 if(selected_ride.avSeats<=0)
                 {
