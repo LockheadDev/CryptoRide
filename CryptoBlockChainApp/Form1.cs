@@ -9,8 +9,7 @@ using System.Linq;
 namespace CryptoBlockChainApp
 {
     // TODO/OPTIONAL - SALVAR EN UN FILE USERS(OBJ) LIST AND RIDES(OBJ) LIST -> INITIALIZE THIS OBJECTS
-    // 
-    // TODO - PUT ethereum 
+    // TODO - PUT ethereum  and Smart Contract
     // TODO - LOAD WALLET MUST!!
     public partial class CryptoRide : Form
     {
@@ -21,8 +20,8 @@ namespace CryptoBlockChainApp
         private List<Label> labels;
 
         //IMAGES Handle
-        String proyectpath = "C:\\Users\\hrswf\\OneDrive\\Docs\\VSProjects\\CryptoRide\\CryptoBlockChainApp\\"; //PUT THE FOLDER WHERE THE IMAGES ARE
-       List<Image> images= new List<Image>();
+        String proyectpath = "C:\\Users\\Lenovo\\OneDrive\\Docs\\VSProjects\\CryptoRide\\CryptoBlockChainApp\\"; //PUT THE FOLDER WHERE THE IMAGES ARE
+        List<Image> images= new List<Image>();
         public CryptoRide()
         {
             InitializeComponent();
@@ -45,14 +44,14 @@ namespace CryptoBlockChainApp
                 imagelist.Images.AddRange(images.ToArray());
             }
             
+            //Agregar imagelist a ListViews
             offerridesListView.SmallImageList = imagelist;
             myridesListView.SmallImageList = imagelist;
             avatarPictureBox.SizeMode = PictureBoxSizeMode.StretchImage; 
             avatarPictureBox.Image = images[currentavatarNum - 1];
         }
 
-       
-
+        #region Selection
         private Ride SelectOfferRide()
         {
        
@@ -74,13 +73,14 @@ namespace CryptoBlockChainApp
             }
             return null;
         }
-
+        #endregion 
+        #region Validation
         private bool ValidateDate(User user, Ride selectedride)
         {
             if (selectedride == null) { ShowLabel("No ride selected!", bidresultLabel, LabelType.critical); return false; }
-            if (user.ethereumAddress == selectedride.ethereumAddress) {ShowLabel("You cannot add a ride you published.", bidresultLabel, LabelType.critical); return false; }
-            if (selectedride.avSeats <= 0) {  ShowLabel("No available seats!", bidresultLabel, LabelType.critical); return false; }
-            
+            if (user.ethereumAddress == selectedride.ethereumAddress) { ShowLabel("You cannot add a ride you published.", bidresultLabel, LabelType.critical); return false; }
+            if (selectedride.avSeats <= 0) { ShowLabel("No available seats!", bidresultLabel, LabelType.critical); return false; }
+
             bool temp_bool = false;
             if (user.myrides.Count <= 0) return true;
             foreach (Ride temp_ride in user.myrides)
@@ -88,31 +88,11 @@ namespace CryptoBlockChainApp
                 if (temp_ride.date != selectedride.date) return true;
                 temp_bool = !DoRangesCollide(temp_ride.fromTime.Ticks, temp_ride.toTime.Ticks, selectedride.fromTime.Ticks, selectedride.toTime.Ticks);
             }
-            if(!temp_bool) ShowLabel("You cannot have two trips at the same time.", bidresultLabel, LabelType.critical);
+            if (!temp_bool) ShowLabel("You cannot have two trips at the same time.", bidresultLabel, LabelType.critical);
             return temp_bool;
 
         }
-        private void SetAvatar(int currentavatarNum)
-        {
-            currentavatarnumLabel.Text = currentavatarNum.ToString();
-            try
-            {
-                avatarPictureBox.Image = images[currentavatarNum - 1];
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-        private bool DoRangesCollide(long from1,long to1, long from2, long to2) // Si collisionan me da true
-        {
-            if (from1 >= from2 && to1 <= to2) return true;   // if selectedride is within the range of any users ride
-            if (from1 <= from2 && to1 >= to2) return true;   // if selectedride is bigger and collides with any users ride
-            if (from1<to2 && to1 > to2)return true;       // if selectedride from time is within range
-            if (from1< from2 && to1 > from2)return true;   // if selectedride to time is within range
-            return false;
-        }
-
-        private bool ValidatePublishRides(Ride selected_ride,long from, long to)
+        private bool ValidatePublishRides(Ride selected_ride, long from, long to)
         {
 
             if (rides.Count <= 0) return true;
@@ -123,12 +103,21 @@ namespace CryptoBlockChainApp
             {
                 if (temp_ride.ethereumAddress == user.ethereumAddress)
                 {
-                    temp_bool =  temp_ride.date==selected_ride.date & !DoRangesCollide(from, to, temp_ride.fromTime.Ticks, temp_ride.toTime.Ticks); // Si hay collisionan regresamos true...
+                    temp_bool = temp_ride.date == selected_ride.date & !DoRangesCollide(from, to, temp_ride.fromTime.Ticks, temp_ride.toTime.Ticks); // Si hay collisionan regresamos true...
                 }
-               
+
             }
             return temp_bool;
         }
+        private bool DoRangesCollide(long from1, long to1, long from2, long to2) // Si collisionan me da true
+        {
+            if (from1 >= from2 && to1 <= to2) return true;   // if selectedride is within the range of any users ride
+            if (from1 <= from2 && to1 >= to2) return true;   // if selectedride is bigger and collides with any users ride
+            if (from1 < to2 && to1 > to2) return true;       // if selectedride from time is within range
+            if (from1 < from2 && to1 > from2) return true;   // if selectedride to time is within range
+            return false;
+        }
+        #endregion
         #region Buttons
         private void bidButton_Click(object sender, EventArgs e)
         {
@@ -266,7 +255,6 @@ namespace CryptoBlockChainApp
             }
             */
         }
-
         private void UpdateListViews(List<Ride> userRides)
         {
             offerridesListView.Items.Clear();
@@ -292,7 +280,6 @@ namespace CryptoBlockChainApp
             item.SubItems.Add(ride.toTime.TimeOfDay.ToString());
             item.SubItems.Add(ride.location);
         }
-
         private void addofferListView(Ride ride)
         {
             if (ride == null) return;
@@ -305,8 +292,18 @@ namespace CryptoBlockChainApp
             item.SubItems.Add(ride.avSeats.ToString());
             item.SubItems.Add("$"+ride.cost.ToString());
         }
+        private void SetAvatar(int currentavatarNum)
+        {
+            currentavatarnumLabel.Text = currentavatarNum.ToString();
+            try
+            {
+                avatarPictureBox.Image = images[currentavatarNum - 1];
+            }
+            catch (Exception ex)
+            {
+            }
+        }
         #endregion
-
         #region Labels
         private void ClearWarningLabels(List<Label> labels)
         {
@@ -345,7 +342,6 @@ namespace CryptoBlockChainApp
             label.Enabled = false;
         }
         #endregion
-
         #region MiscFunctions
         private int GetUnusedID()
         {
@@ -364,13 +360,10 @@ namespace CryptoBlockChainApp
         {
             //TODO Optional Filtrado de columnas
         }
-
-
-        #endregion
-
         private void loadwalletButton_OnClick(object sender, EventArgs e)
         {
             //TODO Load wallet functionality
         }
+        #endregion
     }
 }

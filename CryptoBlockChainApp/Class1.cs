@@ -50,7 +50,7 @@ namespace CryptoBlockChainApp
         public User()
         {
             this.name = null;
-            this.avatarNum = -1;
+            this.avatarNum = 1;
             this.ethereumAddress = null;
         }
 
