@@ -69,7 +69,7 @@ namespace CryptoBlockChainApp
             this.offerdateLabel = new System.Windows.Forms.Label();
             this.publishrideLabel = new System.Windows.Forms.Label();
             this.myridesGroupBox = new System.Windows.Forms.GroupBox();
-            this.unbidButton = new System.Windows.Forms.Button();
+            this.loadwalletButton = new System.Windows.Forms.Button();
             this.profileGroupBox = new System.Windows.Forms.GroupBox();
             this.currentavatarnumLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
@@ -91,8 +91,8 @@ namespace CryptoBlockChainApp
             // 
             this.offerridesListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.offerridesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColumnID,
             this.ColumnImage,
+            this.ColumnID,
             this.ColumnDate,
             this.ColumnFrom,
             this.ColumnTo,
@@ -150,8 +150,8 @@ namespace CryptoBlockChainApp
             // myridesListView
             // 
             this.myridesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColumnIDUser,
             this.ColumnImageUser,
+            this.ColumnIDUser,
             this.ColumnDateUser,
             this.ColumnFromUser,
             this.ColumnToUser,
@@ -209,7 +209,7 @@ namespace CryptoBlockChainApp
             // bidresultLabel
             // 
             this.bidresultLabel.AutoSize = true;
-            this.bidresultLabel.Location = new System.Drawing.Point(225, 286);
+            this.bidresultLabel.Location = new System.Drawing.Point(6, 286);
             this.bidresultLabel.Name = "bidresultLabel";
             this.bidresultLabel.Size = new System.Drawing.Size(81, 13);
             this.bidresultLabel.TabIndex = 4;
@@ -427,7 +427,6 @@ namespace CryptoBlockChainApp
             // 
             // myridesGroupBox
             // 
-            this.myridesGroupBox.Controls.Add(this.unbidButton);
             this.myridesGroupBox.Controls.Add(this.myridesListView);
             this.myridesGroupBox.Location = new System.Drawing.Point(455, 16);
             this.myridesGroupBox.Name = "myridesGroupBox";
@@ -436,17 +435,19 @@ namespace CryptoBlockChainApp
             this.myridesGroupBox.TabStop = false;
             this.myridesGroupBox.Text = "My future trips";
             // 
-            // unbidButton
+            // loadwalletButton
             // 
-            this.unbidButton.Location = new System.Drawing.Point(336, 281);
-            this.unbidButton.Name = "unbidButton";
-            this.unbidButton.Size = new System.Drawing.Size(75, 23);
-            this.unbidButton.TabIndex = 3;
-            this.unbidButton.Text = "Unbid";
-            this.unbidButton.UseVisualStyleBackColor = true;
+            this.loadwalletButton.Location = new System.Drawing.Point(310, 49);
+            this.loadwalletButton.Name = "loadwalletButton";
+            this.loadwalletButton.Size = new System.Drawing.Size(65, 38);
+            this.loadwalletButton.TabIndex = 3;
+            this.loadwalletButton.Text = "Load Wallet";
+            this.loadwalletButton.UseVisualStyleBackColor = true;
+            this.loadwalletButton.Click += new System.EventHandler(this.loadwalletButton_OnClick);
             // 
             // profileGroupBox
             // 
+            this.profileGroupBox.Controls.Add(this.loadwalletButton);
             this.profileGroupBox.Controls.Add(this.currentavatarnumLabel);
             this.profileGroupBox.Controls.Add(this.saveButton);
             this.profileGroupBox.Controls.Add(this.ethereumaddressLabel);
@@ -592,7 +593,7 @@ namespace CryptoBlockChainApp
         private System.Windows.Forms.ComboBox availableseatsComboBox;
         private System.Windows.Forms.Label offerseatsLabel;
         private System.Windows.Forms.Button offerpublishButton;
-        private System.Windows.Forms.Button unbidButton;
+        private System.Windows.Forms.Button loadwalletButton;
         private System.Windows.Forms.PictureBox avatarPictureBox;
         private System.Windows.Forms.Button previousavatarButton;
         private System.Windows.Forms.Button nextavatarButton;

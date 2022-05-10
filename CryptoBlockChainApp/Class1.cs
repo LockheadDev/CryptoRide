@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CryptoBlockChainApp
-{public enum LabelType { neutral, warning,critical}
+{
+    //ENUMS
+    public enum LabelType { neutral, warning,critical, good}
+
+    //CLASSES
     internal class Ride
     {
 
@@ -29,9 +33,10 @@ namespace CryptoBlockChainApp
             this.location = location;
             this.avSeats = avSeats;
             this.date = date;
-            this.fromTime = fromTime;
-            this.toTime = toTime;
+            this.fromTime = date + fromTime.TimeOfDay;
+            this.toTime = date + toTime.TimeOfDay;
             this.cost = cost;
+            
         }
     }
     internal class User

@@ -29,3 +29,14 @@ C:\Users\Lenovo\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debu
 C:\Users\Lenovo\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.exe
 C:\Users\Lenovo\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.pdb
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\bin\Debug\CryptoBlockChainApp.exe.config
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\bin\Debug\CryptoBlockChainApp.exe
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\bin\Debug\CryptoBlockChainApp.pdb
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.csproj.AssemblyReference.cache
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.CryptoRide.resources
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.Properties.Resources.resources
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.csproj.GenerateResource.cache
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.csproj.CoreCompileInputs.cache
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.exe
+C:\Users\hrswf\OneDrive\Docs\VSProjects\CryptoRide\CryptoBlockChainApp\obj\Debug\CryptoBlockChainApp.pdb
